@@ -13,8 +13,19 @@ data = response.json()
 print("\n--- RAW API RESPONSE ---")
 print(data)
 
-#5. Extract the specific currency rates from the big data dictionary
-rates = data["conversion_rates"]
+# 5. Extract the rates dictionary
+#rates = data["conversion_rates"]
 
-#6.Now,get the user's input for the INR amount
-inr_amount =float(input("Enter amount in INR: "))
+# 6. Get the amount from the user
+inr_amount = float(input("Enter amount in INR: "))
+
+#7 which currency do you want
+target_currency = input("Enter target currency code (USD, EUR, GBP): ").upper()
+
+# Check if the currency code exists in our rates dictionary
+if target_currency in data:
+    # Look up the rate and multiply it by the user's amount
+    converted_amount = inr_amount * data[target_currency]
+    print(f"\n{inr_amount} INR is equal to {round(converted_amount, 2)} {target_currency}")
+else:
+    print("\nSorry, that currency code is not supported.")
