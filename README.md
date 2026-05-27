@@ -14,8 +14,7 @@ then gets a complete financial summary with remaining balance.
 
 **Concepts used:** dictionaries, loops, f-strings, float input, file handling, JSON
 
-#### 📈 Live Currency Converter (INR Base)
-
+#### 📈 Currency Converter
 A lightweight command-line utility built in Python that fetches real-time global exchange rates to convert Indian Rupees (INR) into any target currency instantly. This project demonstrates network programming, API integration, and dynamic JSON data parsing.
 
 ---
