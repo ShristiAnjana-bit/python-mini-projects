@@ -47,6 +47,9 @@ This project utilizes the external third-party library `requests` to communicate
 ```bash
 pip install requests
 
+---
+
+
 ## 4. 🎲 Simple Dice Rolling Simulator
 
 A beginner-friendly Python script that simulates rolling a standard 6-sided die. This project focuses on mastering basic programming building blocks like loops, user input, and random number generation.
