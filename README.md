@@ -46,3 +46,26 @@ Make sure you have Python 3 installed on your machine.
 This project utilizes the external third-party library `requests` to communicate with the web. Install it via your terminal:
 ```bash
 pip install requests
+
+## 4. 🎲 Simple Dice Rolling Simulator
+
+A beginner-friendly Python script that simulates rolling a standard 6-sided die. This project focuses on mastering basic programming building blocks like loops, user input, and random number generation.
+
+## 🚀 Features
+
+- **Random Rolling:** Uses Python's `random` module to generate a number between 1 and 6.
+- **Interactive Choice:** Prompts the user to decide whether they want to roll or exit.
+- **Simple Control Flow:** Uses a `while` loop and `if/else` conditions to manage the game logic.
+
+## 🛠️ Key Concepts Practiced
+
+* **`random.randint(1, 6)`**: Generating a random integer.
+* **`while` Loops**: Keeping the game running until the user wants to quit.
+* **`if/else` Statements**: Checking the user's input to see if they typed 'yes' or 'no'.
+
+## 📦 How to Run
+
+1. Open your terminal or command prompt.
+2. Run the script using:
+   ```bash
+   python dice.py
