@@ -1,74 +1,39 @@
-# Python Mini Projects
+# Python Mini-Projects Portfolio
 
-A collection of Python projects built from scratch to learn core concepts.
-
-## 1. Number Guessing Game
-A CLI game where the computer picks a random number 
-and the user guesses it with high/low hints.
-
-**Concepts used:** loops, conditionals, random library, user input
-
-## 2. Budget Tracker
-A CLI app where user enters monthly income and expenses, 
-then gets a complete financial summary with remaining balance.
-
-**Concepts used:** dictionaries, loops, f-strings, float input, file handling, JSON
-
-### 3. Currency Converter
-A lightweight command-line utility built in Python that fetches real-time global exchange rates to convert Indian Rupees (INR) into any target currency instantly. This project demonstrates network programming, API integration, and dynamic JSON data parsing.
+Welcome to my Python practice and project repository! This directory contains a collection of mini-projects designed to master core programming fundamentals, control flow, data structures, and algorithmic logic.
 
 ---
 
-## 🚀 Key Features
+## 📂 Project Directory Breakdown
 
-* **Real-time Data:** Connects directly to a live exchange rate API over the internet.
-* **No Hardcoded Rates:** Dynamically fetches up-to-the-minute global values every single time it executes.
-* **User-Input Sanitization:** Automatically handles case-insensitive inputs (e.g., handles `usd` or `USD` seamlessly).
-* **Robust Logic:** Validates currency codes before performing calculations to prevent runtime errors.
+### 🎮 Games
+* **`snake_water_py.py`**: A command-line implementation of the classic *Snake, Water, Gun* game utilizing the `random` module for dynamic computer moves and dictionary mapping for clean logic.
+* **`stonepaper.py`**: A fully functional *Rock, Paper, Scissors* game tracking user inputs against random computer selections.
+* **`game.py`**: Core game logic module experimentations.
+* **`dice.py`**: A simulator replicating real-world probability through rolling a virtual dice using random integer generation.
+
+### 🛠️ Utilities & Trackers
+* **`quize.py`**: A terminal-based dynamic quiz application handling interactive user inputs and score calculations.
+* **`budget.py`**: A financial utility scripts aimed at tracking basic transactional data and managing allocations.
+* **`converter.py`**: A unit converter designed to handle mathematical transformations between different scales (e.g., metric units or currencies).
+
+### 📊 Data & Logic Practice
+* **`dictionary.py`**: Practical application of key-value pair mechanics, custom exception/error handling (`KeyError`), and formatted string layouts.
+* **`expenses.json`**: A structured JSON data storage file used to save and retrieve persistency records for the budget or expenses utility.
 
 ---
 
-## 🛠️ Tech Stack & Concepts Explored
+## 🚀 Key Learning Milestones Covered
 
-* **Language:** Python 3
-* **Networking Library:** `requests` (HTTP client)
-* **Data Format:** JSON (JavaScript Object Notation) parsed directly into a Python Dictionary.
-* **Core Logic:** Conditional blocks (`if/else`), type-casting (`string` to `float`), and string formatting.
+* **Algorithmic Thinking**: Implemented boundary logic conditions (e.g., Hollow Square patterns) and custom algebraic mapping formulas (`11 - i`).
+* **Recursion**: Mastered call stack manipulation, breaking down differences between **Top-Down (Pre-order)** and **Bottom-Up (Post-order)** function traces.
+* **Data Structures**: Hands-on management of Python lists, dictionary lookups, and tracking multidimensional matrices.
 
 ---
 
-## 📦 How to Install and Run
+## 🛠️ How to Run Any Project
 
-### 1. Prerequisites
-Make sure you have Python 3 installed on your machine.
+Ensure you have Python installed on your local computer. Open your terminal in this workspace and execute:
 
-### 2. Install Dependencies
-This project utilizes the external third-party library `requests` to communicate with the web. Install it via your terminal:
 ```bash
-pip install requests
-
----
-
-
-## 4. 🎲 Simple Dice Rolling Simulator
-
-A beginner-friendly Python script that simulates rolling a standard 6-sided die. This project focuses on mastering basic programming building blocks like loops, user input, and random number generation.
-
-## 🚀 Features
-
-- **Random Rolling:** Uses Python's `random` module to generate a number between 1 and 6.
-- **Interactive Choice:** Prompts the user to decide whether they want to roll or exit.
-- **Simple Control Flow:** Uses a `while` loop and `if/else` conditions to manage the game logic.
-
-## 🛠️ Key Concepts Practiced
-
-* **`random.randint(1, 6)`**: Generating a random integer.
-* **`while` Loops**: Keeping the game running until the user wants to quit.
-* **`if/else` Statements**: Checking the user's input to see if they typed 'yes' or 'no'.
-
-## 📦 How to Run
-
-1. Open your terminal or command prompt.
-2. Run the script using:
-   ```bash
-   python dice.py
+python filename.py
