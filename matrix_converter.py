@@ -43,6 +43,20 @@ def add_matrices(matrix1,matrix2):
 
     return result 
 
+def subtract_matrices(matrix1,matrix2):
+    result = []
+
+    for i in range(len(matrix1)):
+        row = []
+
+        for j in range(len(matrix1[0])):
+            difference = matrix1[i][j] - matrix2[i][j]
+            row.append(difference)
+
+        result.append(row)
+
+    return result
+
 rows = int(input("Enter rows: "))
 cols = int(input("Enter cols: "))
 
@@ -58,8 +72,9 @@ for i in range(rows):
 while True:
     print("\n1.Display")
     print("2. Transpose")
-    print("3.Exit")
-    print("4.Exit")
+    print("3.Add Matrices")
+    print("4.Subtract Matrices")
+    print("5.Exit")
 
     choice = int(input("Enter choice: "))
 
@@ -71,6 +86,7 @@ while True:
         display(t)
 
     elif choice == 3:
+
         matrix2 = []
 
         print("Enter second matrix:")
@@ -85,7 +101,17 @@ while True:
         display(result)
 
     elif choice == 4:
-        break 
+        matrix2 = [] 
+
+        print("Enter second matrix:")
+
+        for i in range(rows):
+            row = list(map(int,input().split()))
+            matrix2.append(row)
+        result = subtract_matrices(matrix,matrix2)
+
+        print("Result:")
+        display(result)
 
     else:
         print("Invalid choice")
