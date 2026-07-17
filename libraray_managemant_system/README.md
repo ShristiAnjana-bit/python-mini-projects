@@ -1,18 +1,49 @@
-# Library Management System
+# 📚 Library Management System
+
+A simple command-line Library Management System built using Python and Object-Oriented Programming.
 
 ## Features
-- Add Book
-- View Books
-- Search Book
-- Remove Book
-- Exit
+
+- ✅ Add a book
+- ✅ View all books
+- ✅ Search for a book
+- ✅ Remove a book
+- ✅ Data is stored in a file (`books.txt`)
+- ✅ Automatically loads saved books when the program starts
+- ✅ Exception handling for missing files
 
 ## Technologies Used
+
 - Python
-- OOP
+- Object-Oriented Programming (OOP)
+- File Handling
+- Exception Handling
+- Git & GitHub
+
+## Project Structure
+
+```
+library_management_system/
+│── main.py
+│── library.py
+│── books.txt
+│── README.md
+```
 
 ## How to Run
-1. Clone the repository
-2. Open terminal
-3. Run:
-   python main.py
+
+```bash
+python main.py
+```
+
+## Future Improvements
+
+- Prevent duplicate books
+- Case-insensitive search
+- SQLite database integration
+- Flask web application
+- User authentication
+
+## Author
+
+Shristi
