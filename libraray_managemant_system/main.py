@@ -17,7 +17,7 @@ while True:
         library.add_book(book_name)
         print(f"'{book_name}' added successfully!")
 
-    if choice == "2":
+    elif choice == "2":
         books = library.get_all_books()
 
         if books:
