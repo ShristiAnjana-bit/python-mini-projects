@@ -4,24 +4,43 @@ class Library:
         self.load_books()
 
     def add_book(self, book_name):
+        if not book_name.strip():
+            return False
+
+            #next validation
+        if self.search_book(book_name):
+            return False
+            
         self.books.append(book_name)
         self.save_books()
+        return True
 
     # def display_books(self):
     #     for book_name in self.books:
     #        print(book_name)
 
     def get_all_books(self):
+        self.books.sort()
         return self.books
 
+    def total_books(self):
+        return len(self.books)
+    
+
     def search_book(self, book_name):
-        return book_name in self.books
+        for book in self.books:
+            if book.lower() == book_name.lower():
+                return True
+
+        return False
+        
     
     def remove_book(self,book_name):
-        if self.search_book(book_name):
-           self.books.remove(book_name)
-           self.save_books()
-           return True
+        for book in self.books:
+            if book.lower() == book_name.lower():
+               self.books.remove(book)
+               self.save_books()
+               return True
 
         return False
 

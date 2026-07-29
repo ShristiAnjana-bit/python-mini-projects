@@ -11,21 +11,28 @@ while True:
     print("5.Exit")
 
     choice = input("Enter your choice: ")
-
+    
     if choice == "1":
         book_name = input("Enter book name: ")
-        library.add_book(book_name)
-        print(f"'{book_name}' added successfully!")
 
+        if library.add_book(book_name):
+           print(f"'{book_name}' added successfully!")
+        else:
+           print("Book already exists.")
+            
     elif choice == "2":
         books = library.get_all_books()
-
         if books:
-            for book in books:
-                print(book)
+           print("Total Books:" , library.total_books())
+
+           for index, book in enumerate(books,start=1):
+               print(f"{index}.{book}")
+
         else:
             print("No books available.")
+        
 
+        
     elif choice == "3":
         book_name = input("Enter book name:")
 
