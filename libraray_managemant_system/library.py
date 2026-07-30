@@ -63,6 +63,21 @@ class Library:
             for book in self.books:
                 file.write(book + "\n")
 
+    def update_book(self,old_book,new_book):
+
+       if not self.search_book(old_book):
+        return False
+
+       if self.search_book(new_book):
+         return False
+
+       for index,book in enumerate(self.books):
+            if book.lower() == old_book.lower():
+                self.books[index] = new_book
+                self.save_books()
+                return True
+       return False
+       
                 
                 
     
