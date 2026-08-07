@@ -38,3 +38,11 @@ while True:
                 print(f"Edition: {book['edition']}")
                 print(f"Publisher:{book['publisher']}")
                 print("-"*30)
+
+    elif choice == "4":
+        title = input("Enter title to remove: ")
+
+        if library.remove_book(title):
+            print("Book removed successfully.")
+        else:
+            print("Book not found.")

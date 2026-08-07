@@ -51,3 +51,11 @@ class Library:
     def get_all_books(self):
         return self.books
 
+    def remove_book(self,title):
+        for book in self.books:
+            if book["title"].lower() == title.lower:
+                self.books.remove(book)
+                self.save_books()
+                return True
+
+        return False
