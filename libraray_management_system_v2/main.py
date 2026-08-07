@@ -23,3 +23,18 @@ while True:
             print("Book added successfully.")
         else:
              print("Please fill in all the fields.")
+
+    elif choice == "2":
+        books = library.get_all_books()
+
+        if not books:
+            print("No books available.")
+        else:
+            print("\n==== All Books =====.")
+
+            for book in books:
+                print(f"Title: {book['title']}")
+                print(f"Author:{book['author']}")
+                print(f"Edition: {book['edition']}")
+                print(f"Publisher:{book['publisher']}")
+                print("-"*30)

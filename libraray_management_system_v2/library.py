@@ -48,3 +48,6 @@ class Library:
                return book
         return None 
 
+    def get_all_books(self):
+        return self.books
+
