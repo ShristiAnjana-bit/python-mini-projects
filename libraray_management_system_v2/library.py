@@ -59,3 +59,15 @@ class Library:
                 return True
 
         return False
+
+    def update_book(self,title,new_title,new_author,new_edition,new_publisher):
+        book = self.search_book(title)
+        if book is None:
+            return False
+
+        book["title"] = new_title
+        book["author"] = new_author
+        book["edition"] = new_edition
+        book["publisher"] = new_publisher
+        self.save_books()
+        return True

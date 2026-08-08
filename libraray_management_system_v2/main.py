@@ -39,6 +39,23 @@ while True:
                 print(f"Publisher:{book['publisher']}")
                 print("-"*30)
 
+    elif choice == "3":
+        title = input("Enter title to search:")
+
+        book = library.search_book(title)
+
+        if book is None:
+            print("Book not found.")
+        else:
+            print("\nBook found:")
+            print(f"Title: {book['title']}")
+            print(f"author: {book['author']}")
+            print(f"Edition: {book['edition']}")
+            print(f"Publisher: {book['publisher']}")
+            
+            
+            
+
     elif choice == "4":
         title = input("Enter title to remove: ")
 
@@ -46,3 +63,16 @@ while True:
             print("Book removed successfully.")
         else:
             print("Book not found.")
+
+        
+    elif choice == "5":
+        title = input("Enter title to update: ")
+        new_title = input("Enter the new title:")
+        new_author = input("Enter the new author:")
+        new_edition = input("Enter the new edition:")
+        new_publisher = input("Enter the new publisher:")
+        
+        if library.update_book(title,new_title,new_author,new_edition,new_publisher):
+            print("Book updated successfully.")
+        else:
+            print("Book not found")
