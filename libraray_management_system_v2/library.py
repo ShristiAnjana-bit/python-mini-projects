@@ -2,8 +2,9 @@ import json
 
 class Library:
     def __init__(self):
-        self.books=[]
+        self.books = []
         self.load_books()
+        print("LOADED BOOKS:", self.books)
 
     def load_books(self):
         try:
@@ -23,7 +24,15 @@ class Library:
         #validation
         for value in (title,author,edition,publisher):
             if not value.strip():
-                return False
+                return "empty"
+
+        #duplicate check
+        for book in self.books:
+            print("INPUT:", title,author)
+            print("STORED: ", book["title"], book["author"])
+
+            if book["title"].lower() == title.lower() and book["author"].lower() == author.lower():
+                return "duplicate"
 
         #Create dictionary
         book = {
@@ -53,7 +62,7 @@ class Library:
 
     def remove_book(self,title):
         for book in self.books:
-            if book["title"].lower() == title.lower:
+            if book["title"].lower() == title.lower():
                 self.books.remove(book)
                 self.save_books()
                 return True

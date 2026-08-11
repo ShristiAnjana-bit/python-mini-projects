@@ -19,10 +19,14 @@ while True:
         edition = input("Enter edition:")
         publisher = input("Enter publisher:")
 
-        if library.add_book(title,author,edition,publisher):
+        result = library.add_book(title,author,edition,publisher)
+
+        if result is True:
             print("Book added successfully.")
-        else:
-             print("Please fill in all the fields.")
+        elif result == "empty":
+            print("Please fill in all the fields.")
+        elif result == "duplicate":
+            print("Book already exists.")
 
     elif choice == "2":
         books = library.get_all_books()
@@ -76,3 +80,7 @@ while True:
             print("Book updated successfully.")
         else:
             print("Book not found")
+
+    elif choice == "6":
+        print("Existing Library Management System. Goodbye!")
+        break
