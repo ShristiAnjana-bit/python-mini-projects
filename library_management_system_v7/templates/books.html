@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Books</title>
+</head>
+<body>
+
+    <h1>{{ heading }} </h1>
+    
+    <form action="/search_book" method="GET">
+        <input type="text" name="title"
+        <button type="submit">Search</button>
+    </form>
+
+{% if books  %}
+    {% for book in books %}
+        <p>{{book["title"]}}</p>
+        <p>{{book["author"]}}</p>
+        <p>{{book["edition"]}}</p>
+        <p>{{book["publisher"]}}</p>
+    {% endfor %}
+{% else %} 
+    <p>No books available.</p>
+{% endif %}
+
+</body>
+</html>

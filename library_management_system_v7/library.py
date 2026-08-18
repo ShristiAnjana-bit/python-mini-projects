@@ -60,8 +60,8 @@ class Library:
             WHERE title LIKE ?
         """, (f"%{title}%",))
 
-        book = self.cursor.fetchone()
-        return book
+        books = self.cursor.fetchall()
+        return books
        
 
     def get_all_books(self):
