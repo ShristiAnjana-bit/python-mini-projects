@@ -1,9 +1,10 @@
-from flask import Flask, render_template
+from flask import Flask, render_template,request,redirect,flash
 from library import Library
-from flask import request
+
 
 
 app = Flask(__name__)
+app.secret_key ="your-secret-key"
 
 
 @app.route("/")
@@ -19,5 +20,27 @@ def search_book():
     result = library.search_book(query)
     return render_template("books.html",books=result, heading="Search Results")
 
+@app.route("/add_book",methods=["POST"])
+def add_book():
+    library = Library()
+
+    title = request.form.get("title")
+    author = request.form.get("author")
+    edition = request.form.get("edition")
+    publisher = request.form.get("publisher")
+    result = library.add_book(title,author,edition,publisher)
+    if result == "duplicate":
+        flash("Book already exists")
+        return redirect("/")
+    elif result == "empty":
+        flash("All fields are required")
+        return redirect("/")
+    else:
+        return redirect("/")
+    
+    
+
+    
+    
 if __name__ == "__main__":
     app.run(debug=True)
