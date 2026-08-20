@@ -37,6 +37,33 @@ def add_book():
         return redirect("/")
     else:
         return redirect("/")
+
+@app.route("/edit_book/<id>", methods=["GET" , "POST"])
+def edit_book(id):
+    library = Library()
+    book = library.get_book_by_id(id)
+    if request.method == "POST":
+        
+        title = request.form.get("title")
+        author = request.form.get("author")
+        edition = request.form.get("edition")
+        publisher = request.form.get("publisher")
+        
+        result = library.update_book(
+            book["title"],
+            title,
+            author,
+            edition,
+            publisher
+        )
+        if result:
+            flash("Book updated successfully")
+            return redirect("/")
+        else:
+            flash("Book could not be updated")
+            return redirect("/")
+
+    return render_template("edit_book.html",book=book)
     
     
 

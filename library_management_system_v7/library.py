@@ -113,3 +113,11 @@ class Library:
         return books
 
 
+    def get_book_by_id(self,id):
+        self.cursor.execute("""
+            SELECT * FROM books
+            WHERE id = ?
+        """,(id))
+
+        book = self.cursor.fetchone()
+        return book

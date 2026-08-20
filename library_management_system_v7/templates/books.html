@@ -37,6 +37,8 @@
         <p>{{book["author"]}}</p>
         <p>{{book["edition"]}}</p>
         <p>{{book["publisher"]}}</p>
+
+        <a href="/edit_book/{{ book['id']}}">Edit</a>
     {% endfor %}
 {% else %} 
     <p>No books available.</p>
