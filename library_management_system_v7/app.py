@@ -65,7 +65,18 @@ def edit_book(id):
 
     return render_template("edit_book.html",book=book)
     
-    
+@app.route("/delete_book/<id>")
+def delete_book(id):
+    library = Library()
+    result = library.delete_book(id)
+
+    if result:
+        flash("Book deleted successfully")
+        return redirect("/")
+
+    else:
+        flash("Book could not be deleted")
+        return redirect("/")
 
     
     

@@ -121,3 +121,16 @@ class Library:
 
         book = self.cursor.fetchone()
         return book
+
+    def delete_book(self,id):
+        self.cursor.execute("""
+          DELETE FROM books
+          WHERE id = ?
+        """,(id,))
+
+        self.conn.commit()
+
+        if self.cursor.rowcount >0:
+            return True
+        else:
+            return False

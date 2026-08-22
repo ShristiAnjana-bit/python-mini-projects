@@ -39,6 +39,7 @@
         <p>{{book["publisher"]}}</p>
 
         <a href="/edit_book/{{ book['id']}}">Edit</a>
+        <a href="/delete_book/{{ book['id']}}">Delete</a>
     {% endfor %}
 {% else %} 
     <p>No books available.</p>
