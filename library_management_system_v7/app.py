@@ -1,14 +1,35 @@
-from flask import Flask, render_template,request,redirect,flash
+from flask import Flask, render_template,request,redirect,flash,session
 from library import Library
-
+from werkzeug.security import generate_password_hash,check_password_hash
 
 
 app = Flask(__name__)
 app.secret_key ="your-secret-key"
 
+@app.route("/register" , methods=["GET","POST"]) 
+def register():
+    if request.method == "POST":
+        username = request.form.get("username")
+        password = request.form.get("password")
+
+        password_hash = generate_password_hash(password)
+
+        library = Library()
+        result = library.register_user(username,password_hash)
+        if result == "duplicate":
+            flash("Username already exists")
+            return redirect("/register")
+
+        flash("Registration successful")
+        return redirect("/register")
+    return render_template("register.html")
+ 
 
 @app.route("/")
 def home():
+    if "user_id" not in session:
+        return redirect("/login")
+
     library = Library()
     books = library.get_all_books()
     return render_template("books.html", books=books, heading="All Books")
@@ -78,7 +99,34 @@ def delete_book(id):
         flash("Book could not be deleted")
         return redirect("/")
 
-    
-    
+@app.route("/login", methods=["GET","POST"])
+def login():
+    if request.method == "POST":
+        username = request.form.get("username")
+        password = request.form.get("password")
+
+        library = Library()
+        user = library.get_user_by_username(username)
+        
+        if user is None:
+            flash("Invalid username or password")
+            return redirect("/login")
+        
+        if check_password_hash(user["password_hash"], password):
+            session["user_id"] = user["id"]
+            return redirect("/")
+        else:
+            flash("Invalid username or password")
+            return redirect("/login")
+
+
+    return render_template("login.html")
+
+@app.route("/logout")
+def logout():
+    session.pop("user_id",None)
+    return redirect("/login")
+
+
 if __name__ == "__main__":
     app.run(debug=True)

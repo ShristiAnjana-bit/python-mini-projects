@@ -19,6 +19,17 @@ class Library:
         """)
 
         self.conn.commit()
+
+        self.cursor.execute("""
+        CREATE TABLE IF NOT EXISTS users(
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            username TEXT UNIQUE NOT NULL,
+            password_hash TEXT NOT NULL
+        )
+        """)
+
+        self.conn.commit()
+
        
         
     
@@ -117,7 +128,7 @@ class Library:
         self.cursor.execute("""
             SELECT * FROM books
             WHERE id = ?
-        """,(id))
+        """,(id,))
 
         book = self.cursor.fetchone()
         return book
@@ -134,3 +145,27 @@ class Library:
             return True
         else:
             return False
+
+    def register_user(self,username,password_hash):
+        try:
+            self.cursor.execute("""
+                INSERT INTO users(username,password_hash)
+                VALUES (?,?)
+            """,(username,password_hash))
+
+            self.conn.commit()
+            return True
+
+        except sqlite3.IntegrityError:
+            self.conn.rollback()
+            return "duplicate"
+    
+    def get_user_by_username(self,username):
+        self.cursor.execute("""
+            SELECT * FROM users
+            WHERE username = ?
+            """,(username,))
+
+        user = self.cursor.fetchone()
+        return user
+       
