@@ -169,3 +169,5 @@ class Library:
         user = self.cursor.fetchone()
         return user
        
+    def close(self):
+        self.conn.close()

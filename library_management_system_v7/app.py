@@ -27,6 +27,7 @@ def register():
 
 @app.route("/")
 def home():
+    print("SESSION:", session)
     if "user_id" not in session:
         return redirect("/login")
 
@@ -37,12 +38,15 @@ def home():
 @app.route("/search_book")
 def search_book():
     library = Library()
+    
     query = request.args.get("title")
     result = library.search_book(query)
     return render_template("books.html",books=result, heading="Search Results")
 
 @app.route("/add_book",methods=["POST"])
 def add_book():
+    if "user_id" not in session:
+        return redirect("/login")
     library = Library()
 
     title = request.form.get("title")
@@ -61,6 +65,9 @@ def add_book():
 
 @app.route("/edit_book/<id>", methods=["GET" , "POST"])
 def edit_book(id):
+    if "user_id" not in session:
+        return redirect("/login")
+
     library = Library()
     book = library.get_book_by_id(id)
     if request.method == "POST":
@@ -86,8 +93,11 @@ def edit_book(id):
 
     return render_template("edit_book.html",book=book)
     
-@app.route("/delete_book/<id>")
+@app.route("/delete_book/<id>", methods=["POST"])
 def delete_book(id):
+    if "user_id" not in session:
+        return redirect("/login")
+        
     library = Library()
     result = library.delete_book(id)
 
@@ -103,10 +113,12 @@ def delete_book(id):
 def login():
     if request.method == "POST":
         username = request.form.get("username")
+        
         password = request.form.get("password")
 
         library = Library()
         user = library.get_user_by_username(username)
+        
         
         if user is None:
             flash("Invalid username or password")
@@ -114,11 +126,11 @@ def login():
         
         if check_password_hash(user["password_hash"], password):
             session["user_id"] = user["id"]
+            
             return redirect("/")
         else:
             flash("Invalid username or password")
             return redirect("/login")
-
 
     return render_template("login.html")
 
@@ -126,6 +138,8 @@ def login():
 def logout():
     session.pop("user_id",None)
     return redirect("/login")
+
+
 
 
 if __name__ == "__main__":

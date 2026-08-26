@@ -5,6 +5,10 @@
 </head>
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 <body>
+    <nav>
+        <a href="/">All Books</a>
+        <a href="/logout">Logout</a>
+    </nav>
 
     <h1>{{ heading }} </h1>
 
@@ -41,8 +45,10 @@
         <p>{{book["publisher"]}}</p>
 
         <a class="action-link" href="/edit_book/{{ book['id']}}">Edit</a>
-        <a class="action-link" href="/delete_book/{{ book['id']}}">Delete</a>
-    </div>
+        <form action="/delete_book/{{ book['id'] }}" method="POST" style="display:inline;">
+        <button type="submit">Delete</button>
+</form>
+</div>
     {% endfor %}
 {% else %} 
     <p>No books available.</p>

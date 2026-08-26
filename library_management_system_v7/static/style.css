@@ -1,5 +1,7 @@
 body{
-    font-family: Arial, sans-serif;
+    background-color: #fdf7f2;
+    color: #222;
+    font-family: Arial,sans-serif;
     margin: 40px;
 
 }
@@ -18,14 +20,23 @@ input{
 }
 
 button{
-    padding: 8px 12px;
-    cursor: pointer;    
+    padding: 8px 14px;
+    background-color: #ff6719;  
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
+button:hover {
+    backgraound-color: #e85b12;
+}
 .book-card{
-     border: 1px solid #ccc;
-     padding: 15px;
-     margin: 15px 0;
+    background-color: white;
+    border: 1px solid #e5ddd5;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 15px 0;
 }
 
 .action-link {
@@ -33,7 +44,14 @@ button{
     padding: 6px 10px;
     margin-right: 5px;
     text-decoration: none;
-    border: 1px solid #333;
+    border: 1px solid #ff6719;
+    border-radius: 5px;
+    color: #ff6719;
+}
+
+.action-link:hover {
+    background-color: #ff6719;
+    color: white;
 }
 
 .flash-message{
@@ -44,5 +62,37 @@ button{
 
 a {
     color: #333;
+}
+nav {
+    background-color: #ff6719;
+    padding: 15px 20px;
+    margin-bottom: 25px;
+}
+nav a {
+    color: white;
+    margin-right: 20px;
+    text-decoration: none;
+    font-weight: bold;
+}
+nav a:hover{
+    text-decoration: underline;
+}
+
+.auth-container {
+    width: 350px;
+    margin: 80px auto;
+    background-color: white;
+    padding:30px;
+    border-radius: 10px;
+    border: 3px solid #ff6719;
+}
+.auth-container input {
+    width: 100%;
+    box-sizing: border-box;
+    margin: 8px 0;
+
+}  
+.auth-container h1{
+    text-align: center;
 }
 

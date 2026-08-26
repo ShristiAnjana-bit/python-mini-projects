@@ -2,9 +2,11 @@
 <html>
     <head>
         <title>Register</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     </head>
 
     <body>
+        <div class ="auth-container">
         <h1>Create Account</h1>
 
         {% with messages = get_flashed_messages() %}
@@ -30,5 +32,11 @@
             <button type="submit">Register</button>
 
         </form>
+
+        <p>
+            Already have an account?
+            <a href="/login">Login</a>
+        </p>
+        </div>
     </body>
 </html>
