@@ -1,10 +1,14 @@
+from dotenv import load_dotenv
+import os
 from flask import Flask, render_template,request,redirect,flash,session
 from library import Library
 from werkzeug.security import generate_password_hash,check_password_hash
 
+load_dotenv()
 
 app = Flask(__name__)
-app.secret_key ="your-secret-key"
+app.secret_key = os.getenv("SECRET_KEY")
+
 
 @app.route("/register" , methods=["GET","POST"]) 
 def register():
