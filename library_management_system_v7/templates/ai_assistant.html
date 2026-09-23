@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Library AI Assistant</title>
+</head>
+
+<body>
+
+    <h1>Library AI Assistant</h1>
+
+    <!-- Form for asking a question -->
+    <form method="POST" action="/ask-ai">
+
+        <input
+            type="text"
+            name="query"
+            placeholder="Ask something about the books..."
+            required
+        >
+
+        <button type="submit">Ask AI</button>
+
+    </form>
+
+    <!-- Show the user's question and AI answer -->
+    {% if answer %}
+
+        <h3>Your Question:</h3>
+        <p>{{ query }}</p>
+
+        <h3>AI Answer:</h3>
+        <p>{{ answer }}</p>
+
+    {% endif %}
+
+</body>
+</html>

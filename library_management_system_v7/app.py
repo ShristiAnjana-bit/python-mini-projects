@@ -4,6 +4,8 @@ from flask import Flask, render_template,request,redirect,flash,session
 from library import Library
 from werkzeug.security import generate_password_hash,check_password_hash
 
+from rag.rag_engine import ask_library_assistant
+
 load_dotenv()
 
 app = Flask(__name__)
@@ -142,6 +144,32 @@ def login():
 def logout():
     session.pop("user_id",None)
     return redirect("/login")
+
+@app.route("/ask-ai", methods=["GET","POST"])
+def ask_ai():
+
+    #check whether the user is logged in
+    if "user_id" not in session:
+        return redirect("/login")
+
+    #Handle th user's question
+    if request.method == "POST":
+
+        #gET THE QUESTION FROM THE form
+        query = request.form.get("query")
+
+        #send the question to the RAG engine
+        answer = ask_library_assistant(query)
+
+        #show the answer on the AI assistant page
+        return render_template(
+            "ai_assistant.html",
+            answer=answer,
+            query=query
+        )
+
+        #show the AI assistant page
+        return render_template("ai_assistant.html")
 
 
 
