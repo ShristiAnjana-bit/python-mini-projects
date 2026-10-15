@@ -3,6 +3,7 @@ import os
 from flask import Flask, render_template,request,redirect,flash,session
 from library import Library
 from werkzeug.security import generate_password_hash,check_password_hash
+from postgres_db import get_published_posts
 
 from rag.rag_engine import ask_library_assistant
 
@@ -168,11 +169,14 @@ def ask_ai():
             query=query
         )
 
-        #show the AI assistant page
-        return render_template("ai_assistant.html")
+    #show the AI assistant page
+    return render_template("ai_assistant.html")
 
 
-
+@app.route("/posts")
+def posts_page():
+    posts = get_published_posts()
+    return render_template("posts.html", posts=posts)
 
 if __name__ == "__main__":
     app.run(debug=True)

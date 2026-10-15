@@ -1,0 +1,22 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Published Stories</title>
+</head>
+<body>
+    <h1>Published Stories</h1>
+
+    {% for post in posts %}
+        <article>
+            <h2>{{ post[1] }}</h2>
+            <p>{{ post[2] }}</p>
+            <small>Published on {{ post[3] }}</small>
+        </article>
+    {% else %}
+        <p>No published stories yet.</p>
+    {% endfor %}
+</body>
+</html>

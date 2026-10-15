@@ -1,5 +1,7 @@
 __pycache__/
-*.pyc
+*.py[cod]
 *.db
-.vscode/
 .env
+.venv/
+venv/
+.vscode/
